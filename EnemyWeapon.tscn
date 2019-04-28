@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/LaserCannon.png" type="Texture" id=1]
+[ext_resource path="res://EnemyWeapon.cs" type="Script" id=2]
+
+[node name="EnemyWeapon" type="Sprite"]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
