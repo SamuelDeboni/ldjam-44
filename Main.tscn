@@ -1,73 +1,39 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Roboto.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sprites/HPBarUnder.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/HPBarOver.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/HPBarProgress.png" type="Texture" id=7]
+[ext_resource path="res://Roboto.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/HPBarUnder.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/HPBarOver.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/HPBarProgress.png" type="Texture" id=6]
+[ext_resource path="res://Arena.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NotoSans-Black.ttf" type="DynamicFontData" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0627451, 0.188235, 0.313726, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.301961, 0.937255, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 8 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 enemy = ExtResource( 2 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 480 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 352, 512 )
-
-[node name="icon3" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 688, 112 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="icon3"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="icon3/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="icon4" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 208, 160 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="icon4"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="icon4/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="icon5" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 640, 512 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="icon5"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="icon5/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="Roboto" parent="." instance=ExtResource( 4 )]
-position = Vector2( 506.849, 304 )
+[node name="Roboto" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 128 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -78,10 +44,92 @@ margin_right = 144.0
 margin_bottom = 56.0
 rect_scale = Vector2( 2.12722, 2.1637 )
 value = 50.0
-texture_under = ExtResource( 5 )
-texture_over = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Arena" parent="." instance=ExtResource( 7 )]
+
+[node name="WaveDuration" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="Upgrades" type="Panel" parent="."]
+editor/display_folded = true
+visible = false
+margin_left = -112.0
+margin_top = -176.0
+margin_right = 112.0
+margin_bottom = -64.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Damage" type="Button" parent="Upgrades"]
+margin_left = 10.0
+margin_top = 16.0
+margin_right = 76.0
+margin_bottom = 36.0
+text = "Damage"
+
+[node name="Label" type="Label" parent="Upgrades/Damage"]
+margin_left = 73.0
+margin_right = 147.0
+margin_bottom = 20.0
+text = "+5  Damage -5HP"
+valign = 1
+
+[node name="Speed" type="Button" parent="Upgrades"]
+margin_left = 10.0
+margin_top = 36.0
+margin_right = 76.0
+margin_bottom = 56.0
+text = "Speed"
+
+[node name="Label" type="Label" parent="Upgrades/Speed"]
+margin_left = 73.0
+margin_right = 178.0
+margin_bottom = 20.0
+text = "2x Speed -5HP"
+valign = 1
+
+[node name="Shield" type="Button" parent="Upgrades"]
+margin_left = 10.0
+margin_top = 56.0
+margin_right = 76.0
+margin_bottom = 76.0
+text = "Shield"
+
+[node name="Label" type="Label" parent="Upgrades/Shield"]
+margin_left = 73.0
+margin_right = 178.0
+margin_bottom = 20.0
+text = "+20% Power -5HP"
+valign = 1
+
+[node name="Especial" type="Button" parent="Upgrades"]
+margin_left = 10.0
+margin_top = 76.0
+margin_right = 76.0
+margin_bottom = 96.0
+text = "Especial"
+
+[node name="Label" type="Label" parent="Upgrades/Especial"]
+margin_left = 73.0
+margin_right = 178.0
+margin_bottom = 20.0
+text = "DoubleShoot -5HP"
+valign = 1
+
+[node name="WaveLabel" type="Label" parent="."]
+margin_left = -73.1008
+margin_top = -94.2936
+margin_right = 70.8992
+margin_bottom = -14.2936
+custom_fonts/font = SubResource( 1 )
+text = "Wave"
+align = 1
+valign = 1
 

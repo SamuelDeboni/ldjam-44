@@ -15,7 +15,7 @@ public class RobotoWeapon : Node2D
             GetParent().GetNode("..").AddChild(bulletInstance);
             var bulletScript = bulletInstance as Bullet;
             bulletScript.vel = vel;
-            bulletInstance.Position = pos;
+            bulletInstance.Position = pos+vel*50+Position;
             timer.Start();
         }
         

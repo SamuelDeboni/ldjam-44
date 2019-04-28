@@ -8,11 +8,11 @@ public class Roboto : KinematicBody2D
     [Export]
     float maxVel = 250;
     
-    float hp = 100;
+    public float hp = 100;
 
     RobotoWeapon weapon;
 
-    float damageTimer = 0.5f;
+    float damageTimer = 1f;
 
     public override void _Ready()
     {
@@ -21,6 +21,7 @@ public class Roboto : KinematicBody2D
 
     public override void _Process(float delta)
     {
+        AnimatedSprite robotoSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         // Movment Controls
         Vector2 vel;
         vel.x = Input.GetActionStrength("move_right")-Input.GetActionStrength("move_left");
@@ -33,20 +34,36 @@ public class Roboto : KinematicBody2D
 
         // Flips the sprite
         bool fliped = mousePos.x - Position.x < 0 ? true : false;
-        GetNode<AnimatedSprite>("AnimatedSprite").FlipH = fliped;
-        weapon.GetNode<Sprite>("Sprite").FlipV = fliped;
+        robotoSprite.FlipH = !fliped;
+        weapon.GetNode<AnimatedSprite>("Sprite").FlipV = fliped;
         weapon.Position = new Vector2(fliped ? 6:-6,0);
 
         if(Input.IsActionPressed("shoot") && weapon != null)
         {    
             weapon.shoot(Position,(mousePos-Position).Normalized());
+            weapon.GetNode<AnimatedSprite>("Sprite").Animation = "Shoting";
         }
+        else
+            weapon.GetNode<AnimatedSprite>("Sprite").Animation = "Default";
 
         var hpBar = GetNode("../HUD/HPBar") as TextureProgress;
         if(hpBar != null) hpBar.Value = hp;
 
         if(damageTimer > 0)
+        {
             damageTimer -= delta;
+            robotoSprite.SetAnimation("Damage");
+        }
+        else if(vel != new Vector2(0,0))
+        {
+            robotoSprite.SetAnimation("Walking");
+        }
+        else
+        {
+            robotoSprite.SetAnimation("Default");
+        }
+        
+        
     }
 
     public void die()
@@ -62,7 +79,7 @@ public class Roboto : KinematicBody2D
             else if(hp >= amount) hp -= amount;
             else hp = 0;
 
-            damageTimer = 0.5f;
+            damageTimer = 1f;
         }
     }
 }
