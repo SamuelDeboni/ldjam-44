@@ -3,6 +3,8 @@ using System;
 
 public class Enemy : KinematicBody2D
 {
+    [Export]
+    bool isRanged = false;
     public float hp = 10;
     public Roboto robotoScript;
     public KinematicBody2D roboto;
@@ -17,21 +19,24 @@ public class Enemy : KinematicBody2D
     {
         Vector2 target = new Vector2();
         if(roboto != null)
-            target = roboto.Position;
+             target = roboto.Position;
         else
             GD.Print("Roboto is null");
-        
+       
         Vector2 vel = (target - Position).Normalized() * delta * 100;
-        
-        var collision = MoveAndCollide(vel);
-        if(collision != null)
+        if(!isRanged)
         {
-            if(collision.Collider is Roboto)
-                robotoScript.damage(5);
-
+            var collision = MoveAndCollide(vel);
+            if(collision != null && collision.Collider is Roboto)
+                 robotoScript.damage(5);
         }
-
-        
+        else
+        {
+            if(Position.DistanceTo(target) > 256)
+                MoveAndCollide(vel);
+            else
+                GetNode<EnemyWeapon>("EnemyWeapon").shoot(target);
+        }
     }
 
     public void die()

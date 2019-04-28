@@ -1,3 +1,4 @@
+
 using Godot;
 using System;
 
@@ -68,7 +69,7 @@ public class Roboto : KinematicBody2D
 
     public void die()
     {
-
+        GD.Print("The player is dead");
     }
 
     public void damage(float amount)

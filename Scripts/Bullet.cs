@@ -10,6 +10,7 @@ public class Bullet : Area2D
     [Export]
     float velMod = 10;
 
+    public int piercingLV = 2;
     float t = 0;
 
     public override void _Process(float delta)
@@ -27,7 +28,9 @@ public class Bullet : Area2D
         {
             var enemy = body as Enemy;
             enemy.damage(bulletDamage);
+            piercingLV--;
         }
-        QueueFree();
+        if(piercingLV <= 0)
+            QueueFree();
     }
 }

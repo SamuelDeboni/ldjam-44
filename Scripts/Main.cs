@@ -20,7 +20,7 @@ public class Main : Node2D
         waveDuration = GetNode("WaveDuration") as Timer;
         timer.Start();
         GD.Print("Started");
-        waveText = GetNode("WaveLabel") as Label;
+        waveText = GetNode("HUD/WaveLabel") as Label;
         
     }
 
@@ -31,11 +31,11 @@ public class Main : Node2D
         {
             waveText.Text = "Wave " + (waveCounter+1);
             waves();
-            GD.Print(waveDuration.TimeLeft);
+            //GD.Print(waveDuration.TimeLeft);
         }
         else if(timer.TimeLeft == 0 && waveDuration.TimeLeft > 30)
         {
-            GD.Print(waveDuration.TimeLeft-30);
+            //GD.Print(waveDuration.TimeLeft-30);
             waveText.Text = Mathf.Round(waveDuration.TimeLeft-30).ToString();
         }
         
