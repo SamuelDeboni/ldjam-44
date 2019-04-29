@@ -78,7 +78,8 @@ public class Roboto : KinematicBody2D
     public void damage(float amount)
     {
         if (damageTimer <= 0)
-        {
+        {   
+            CameraShake.Shake(20);
             if (hp <= 0) die();
             else if(hp >= amount) hp -= amount;
             else hp = 0;
