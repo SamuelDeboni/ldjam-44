@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Main.cs" type="Script" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
@@ -10,22 +10,25 @@
 [ext_resource path="res://NotoSans-Black.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Arena.tscn" type="PackedScene" id=9]
 [ext_resource path="res://EnemyRange.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/BigGun.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/BigGun.cs" type="Script" id=12]
+[ext_resource path="res://Theme.tres" type="Theme" id=13]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 22
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0.439216, 0, 1 )
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.137255, 0.180392, 0.231373, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -36,18 +39,6 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.0627451, 0.188235, 0.313726, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0.301961, 0.937255, 1, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -80,7 +71,7 @@ anchor_right = 0.54
 margin_left = 437.76
 margin_right = 39.04
 margin_bottom = 80.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Wave"
 align = 1
 valign = 1
@@ -90,8 +81,8 @@ margin_left = 18.0
 margin_top = 48.0
 margin_right = 288.0
 margin_bottom = 64.0
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 value = 54.73
 percent_visible = false
 
@@ -105,70 +96,77 @@ wait_time = 50.0
 one_shot = true
 autostart = true
 
-[node name="Upgrades" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
-margin_left = -112.0
-margin_top = -176.0
-margin_right = 112.0
-margin_bottom = -64.0
-custom_styles/panel = SubResource( 1 )
-
-[node name="Damage" type="Button" parent="Upgrades"]
-margin_left = 10.0
-margin_top = 16.0
-margin_right = 76.0
-margin_bottom = 36.0
-text = "Damage"
-
-[node name="Label" type="Label" parent="Upgrades/Damage"]
-margin_left = 73.0
-margin_right = 147.0
-margin_bottom = 20.0
-text = "+5  Damage -5HP"
-valign = 1
-
-[node name="Speed" type="Button" parent="Upgrades"]
-margin_left = 10.0
-margin_top = 36.0
-margin_right = 76.0
-margin_bottom = 56.0
-text = "Speed"
-
-[node name="Label" type="Label" parent="Upgrades/Speed"]
-margin_left = 73.0
-margin_right = 178.0
-margin_bottom = 20.0
-text = "2x Speed -5HP"
-valign = 1
-
-[node name="Shield" type="Button" parent="Upgrades"]
-margin_left = 10.0
-margin_top = 56.0
-margin_right = 76.0
-margin_bottom = 76.0
-text = "Shield"
-
-[node name="Label" type="Label" parent="Upgrades/Shield"]
-margin_left = 73.0
-margin_right = 178.0
-margin_bottom = 20.0
-text = "+20% Power -5HP"
-valign = 1
-
-[node name="Especial" type="Button" parent="Upgrades"]
-margin_left = 10.0
-margin_top = 76.0
-margin_right = 76.0
-margin_bottom = 96.0
-text = "Especial"
-
-[node name="Label" type="Label" parent="Upgrades/Especial"]
-margin_left = 73.0
-margin_right = 178.0
-margin_bottom = 20.0
-text = "DoubleShoot -5HP"
-valign = 1
-
 [node name="EnemyRange" parent="." instance=ExtResource( 10 )]
 
+[node name="BigGun" type="TextureRect" parent="."]
+margin_left = -96.0
+margin_top = -144.0
+margin_right = 96.0
+margin_bottom = -16.0
+texture = ExtResource( 11 )
+script = ExtResource( 12 )
+
+[node name="Speed" type="Button" parent="BigGun"]
+margin_left = 192.0
+margin_top = 48.0
+margin_right = 272.0
+margin_bottom = 96.0
+theme = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="BigGun/Speed"]
+margin_left = 2.0
+margin_right = 80.0
+margin_bottom = 48.0
+text = "200% Speed
+-20HP"
+align = 1
+valign = 1
+
+[node name="Heating" type="Button" parent="BigGun"]
+margin_left = 144.0
+margin_top = 112.0
+margin_right = 240.0
+margin_bottom = 160.0
+theme = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="BigGun/Heating"]
+margin_right = 96.0
+margin_bottom = 48.0
+text = "85% Heating
+-20HP"
+align = 1
+valign = 1
+
+[node name="Piercing" type="Button" parent="BigGun"]
+margin_left = -48.0
+margin_top = 112.0
+margin_right = 48.0
+margin_bottom = 160.0
+theme = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="BigGun/Piercing"]
+margin_right = 94.0
+margin_bottom = 48.0
+text = "+1 Piercing
+-20HP"
+align = 1
+valign = 1
+
+[node name="Damage" type="Button" parent="BigGun"]
+margin_left = -80.0
+margin_top = 48.0
+margin_bottom = 96.0
+theme = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="BigGun/Damage"]
+margin_right = 78.0
+margin_bottom = 48.0
+text = "+5 Damage
+-20HP"
+align = 1
+valign = 1
+
+[connection signal="button_up" from="BigGun/Speed" to="BigGun" method="_on_Speed_button_up"]
+[connection signal="button_up" from="BigGun/Heating" to="BigGun" method="_on_Heating_button_up"]
+[connection signal="button_up" from="BigGun/Piercing" to="BigGun" method="_on_Piercing_button_up"]
+[connection signal="button_up" from="BigGun/Damage" to="BigGun" method="_on_Damage_button_up"]

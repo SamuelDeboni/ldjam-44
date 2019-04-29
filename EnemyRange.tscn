@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Enemy.cs" type="Script" id=1]
 [ext_resource path="res://Sprites/BaseEnemy.png" type="Texture" id=2]
 [ext_resource path="res://EnemyWeapon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,4 +34,10 @@ shape = SubResource( 2 )
 
 [node name="EnemyWeapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0.104673, -3.87293 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, 11.228 )
+scale = Vector2( 0.748129, 0.715418 )
+z_index = -1
+texture = ExtResource( 4 )
 

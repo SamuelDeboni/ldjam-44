@@ -4,6 +4,7 @@ using System;
 public class Bullet : Area2D
 {
 
+    public bool isFromEnemy;
     public Vector2 vel;
     public float bulletDamage = 5;
 

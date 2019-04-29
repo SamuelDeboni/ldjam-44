@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Enemy.cs" type="Script" id=1]
 [ext_resource path="res://Sprites/BaseEnemy_1.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/BaseEnemy_2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/BaseEnemy_3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,10 +26,19 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.135269, 3.59344 )
 shape = SubResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0.373, 12.897 )
+scale = Vector2( 0.8, 0.64 )
+z_index = -1
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 

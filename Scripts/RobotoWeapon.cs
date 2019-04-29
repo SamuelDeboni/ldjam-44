@@ -3,17 +3,20 @@ using System;
 
 public class RobotoWeapon : Node2D
 {
-    
+    public Timer timer;
     bool isOverloaded = false;
     float overloadPercent;
     Timer overloadTimer;
 
+    public float damage = 5;
     public float cooling = 40;  
-    public float overload = 20;
+    public float overload = 1;
+    public int piercing = 1;
 
     public override void _Ready()
     {
         overloadTimer = GetNode("OverloadTimer") as Timer;
+        timer = GetNode("Timer") as Timer;
     }
 
     public override void _Process(float delta)
@@ -34,7 +37,7 @@ public class RobotoWeapon : Node2D
     }
     public void shoot(Vector2 pos, Vector2 vel)
     {
-        var timer = GetNode("Timer") as Timer;
+        
         
         if(timer.TimeLeft == 0 && !isOverloaded)
         {
@@ -43,10 +46,12 @@ public class RobotoWeapon : Node2D
             GetParent().GetNode("..").AddChild(bulletInstance);
             var bulletScript = bulletInstance as Bullet;
             bulletScript.vel = vel;
+            bulletScript.bulletDamage = damage;
+            bulletScript.piercingLV = piercing;
             bulletInstance.Position = pos+vel*10+Position;
             timer.Start();
 
-            overloadPercent += overload;
+            overloadPercent += overload*20;
 
             
         }
