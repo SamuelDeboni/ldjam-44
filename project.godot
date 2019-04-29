@@ -19,6 +19,10 @@ config/name="ldjam-44"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+autoLoad="*res://autoLoad.cs"
+
 [input]
 
 move_right={

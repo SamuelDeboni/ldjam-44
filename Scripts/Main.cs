@@ -18,6 +18,8 @@ public class Main : Node2D
     public bool stoped = false;
 
     int waveCounter = 0;
+
+    public bool lastWave = false;
     
     public override void _Ready()
     {
@@ -26,7 +28,7 @@ public class Main : Node2D
         timer.Start();
         GD.Print("Started");
         waveText = GetNode("HUD/WaveLabel") as Label;
-        
+        GetTree().GetRoot().GetNode<autoLoad>("autoLoad").killCount = enemyKilled;
     }
 
     public bool hasEnemy()
@@ -42,6 +44,7 @@ public class Main : Node2D
     public override void _Process(float delta)
     {      
         GetNode<Label>("HUD/KillCount").Text = "Enemies Killed " + enemyKilled.ToString();
+        GetTree().GetRoot().GetNode<autoLoad>("autoLoad").killCount = enemyKilled;
 
         if(timer.TimeLeft == 0 && enemy != null && waveDuration.TimeLeft <= 40 && waveDuration.TimeLeft > 5)
         {
@@ -136,6 +139,45 @@ public class Main : Node2D
                         spawn(enemy);
                     else
                         spawn(enemy2);;
+            break;
+
+            case 10:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 12:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 13:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);
+            break;
+
+            case 14:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);
+            break;
+
+            case 15:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);
+
+                    lastWave = true;
+                    waveDuration.Start();
+                     waveText.Text = "∞";
             break;
         }
     }

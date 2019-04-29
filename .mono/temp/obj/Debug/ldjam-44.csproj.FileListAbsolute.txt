@@ -1,6 +1,0 @@
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/bin/Debug/ldjam-44.dll
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/bin/Debug/ldjam-44.pdb
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/obj/Debug/ldjam-44.csprojAssemblyReference.cache
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/obj/Debug/ldjam-44.csproj.CoreCompileInputs.cache
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/obj/Debug/ldjam-44.dll
-/home/samuel/Godot/Projetos/ldjam-44/.mono/temp/obj/Debug/ldjam-44.pdb
