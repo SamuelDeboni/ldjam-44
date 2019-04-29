@@ -48,7 +48,16 @@ public class Enemy : KinematicBody2D
     {
         Main main = GetTree().GetRoot().GetNode("Main") as Main;
         main.enemyKilled++;
-        //GD.Print( main.enemyKilled);
+        
+        if (roboto != null)
+        {
+            float dist = Position.DistanceTo(roboto.Position);
+            float strength = Mathf.Clamp(60 - dist/5, 5, 30);
+            CameraShake.Shake(strength);
+            GD.Print(strength);
+        }
+        
+
         QueueFree();
     }
     public void damage(float amount)
