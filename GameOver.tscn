@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GameOver.cs" type="Script" id=1]
 [ext_resource path="res://NotoSans-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sounds/Robobozo.ogg" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -51,5 +52,8 @@ margin_top = 148.0
 margin_right = 96.0
 margin_bottom = 196.0
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

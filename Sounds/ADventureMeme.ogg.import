@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ADventureMeme.ogg-ffce517210ff19d8be3e83dbad9e004b.oggstr"
+
+[deps]
+
+source_file="res://Sounds/ADventureMeme.ogg"
+dest_files=[ "res://.import/ADventureMeme.ogg-ffce517210ff19d8be3e83dbad9e004b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
