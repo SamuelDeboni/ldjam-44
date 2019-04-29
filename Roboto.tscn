@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Roboto.cs" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/Bot_Walking_1.png" type="Texture" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://Sprites/Player/Bot.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Transparent.png" type="Texture" id=9]
 [ext_resource path="res://RobotoWeapon.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/CameraShake.cs" type="Script" id=11]
+[ext_resource path="res://Sprites/Shadow.png" type="Texture" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -52,10 +53,11 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 10.0
+script = ExtResource( 11 )
 
 [node name="Shadow" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.501961 )
 position = Vector2( 0.100403, 8.09132 )
 z_index = -1
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
