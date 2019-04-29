@@ -24,6 +24,29 @@ public class BigGun : TextureRect
         roboto = GetNode("../Roboto") as Roboto;
     }
 
+    public override void _Process(float delta)
+    {
+        if(GetNode<Main>("..").waveDuration.TimeLeft == 0 &&
+           GetNode<KinematicBody2D>("../Roboto").Position.DistanceTo(new Vector2(0,0)) < 64&&
+           GetNode<Main>("..").stoped)
+        {
+            Visible = true;
+        }
+        else
+        {
+            Visible = false;
+        }
+    }
+
+    public void _on_Done_button_up()
+    {
+        if(GetNode<Main>("..").waveDuration.TimeLeft == 0 &&
+           GetNode<KinematicBody2D>("../Roboto").Position.DistanceTo(new Vector2(0,0)) < 64)
+        {
+            GetNode<Main>("..").waveDuration.Start();
+            GetNode<Main>("..").stoped = false;
+        }
+    }
     public void _on_Speed_button_up()
     {
         if(robotoWeapon != null && roboto != null)
@@ -32,7 +55,7 @@ public class BigGun : TextureRect
             {
                 roboto.hp -= speedCost[speedLevel];
                 speedLevel++;
-                robotoWeapon.timer.WaitTime = 0.5f/(speedLevel+1);
+                robotoWeapon.timer.WaitTime = 0.45f/(speedLevel+1);
             }   
             GD.Print("Speed");
             if(speedLevel < 5)

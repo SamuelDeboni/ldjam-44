@@ -52,7 +52,6 @@ public class RobotoWeapon : Node2D
             timer.Start();
 
             overloadPercent += overload*20;
-
             
         }
         

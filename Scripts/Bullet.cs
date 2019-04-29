@@ -4,7 +4,7 @@ using System;
 public class Bullet : Area2D
 {
 
-    public bool isFromEnemy;
+    public bool isFromEnemy = false;
     public Vector2 vel;
     public float bulletDamage = 5;
 
@@ -25,12 +25,19 @@ public class Bullet : Area2D
 
     public void _on_Bullet_body_entered(PhysicsBody2D body)
     {
-        if(body is Enemy)
+        if(body is Enemy && !isFromEnemy)
         {
             var enemy = body as Enemy;
             enemy.damage(bulletDamage);
             piercingLV--;
         }
+        
+        if(body is Roboto && isFromEnemy)
+        {
+            var roboto = body as Roboto;
+            roboto.damage(5);
+        }
+
         if(piercingLV <= 0)
             QueueFree();
     }

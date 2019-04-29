@@ -6,6 +6,13 @@ public class EnemyWeapon : Sprite
     public void shoot(Vector2 target)
     {
         LookAt(target);
-        //GD.Print("atirou");
+        var bullet = GD.Load<PackedScene>("res://Bullet.tscn"); 
+        var bulletInstance = bullet.Instance() as Area2D;    
+        GetParent().GetNode("..").AddChild(bulletInstance);
+        var bulletScript = bulletInstance as Bullet;
+        bulletInstance.Position = GetNode<KinematicBody2D>("..").Position;
+        Vector2 vel = (-Position+target).Normalized();
+        bulletScript.isFromEnemy = true;
+        bulletScript.vel = vel;
     }
 }

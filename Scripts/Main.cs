@@ -5,12 +5,16 @@ using System.Collections.Generic;
 public class Main : Node2D
 {
     Timer timer;
-    Timer waveDuration;
+    public Timer waveDuration;
     
     [Export]
     PackedScene enemy;
+    
+    [Export]
+    PackedScene enemy2;
 
     Label waveText;
+    public bool stoped = false;
 
     int waveCounter = 0;
     
@@ -24,27 +28,39 @@ public class Main : Node2D
         
     }
 
+    public bool hasEnemy()
+    {
+        foreach(var e in GetChildren())
+        {
+            if(e is Enemy)
+                return true;
+            //GD.Print(e);
+        }
+        return false;
+    }
     public override void _Process(float delta)
     {      
         
-        if(timer.TimeLeft == 0 && enemy != null && waveDuration.TimeLeft <= 30 && waveDuration.TimeLeft > 5)
+        if(timer.TimeLeft == 0 && enemy != null && waveDuration.TimeLeft <= 40 && waveDuration.TimeLeft > 5)
         {
             waveText.Text = "Wave " + (waveCounter+1);
             waves();
             //GD.Print(waveDuration.TimeLeft);
         }
-        else if(timer.TimeLeft == 0 && waveDuration.TimeLeft > 30)
+        else if(timer.TimeLeft == 0 && waveDuration.TimeLeft > 40)
         {
             //GD.Print(waveDuration.TimeLeft-30);
-            waveText.Text = Mathf.Round(waveDuration.TimeLeft-30).ToString();
+            waveText.Text = Mathf.Round(waveDuration.TimeLeft-40).ToString();
         }
         
-        if(waveDuration.TimeLeft == 0)
+        if(waveDuration.TimeLeft == 0 && !stoped && !hasEnemy())
         {
+            stoped = true;
             GetNode<Roboto>("Roboto").hp = 100;
             waveCounter++;
-            waveDuration.Start();
-            //timer.WaitTime *= 0.5f;
+            //waveDuration.Start();
+            timer.WaitTime *= 0.8f;
+            waveText.Text = "Wave complete\nGo to the center";
         }
     }
 
@@ -58,15 +74,66 @@ public class Main : Node2D
             break;
 
             case 1:
-                    spawn(enemy);
+                    if(GD.Randf() > 0.2f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);
             break;
 
             case 2:
-                    spawn(enemy);
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);
             break;
 
             case 3:
-                    spawn(enemy);
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 4:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 5:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 6:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 7:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 8:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
+            break;
+
+            case 9:
+                    if(GD.Randf() > 0.25f)
+                        spawn(enemy);
+                    else
+                        spawn(enemy2);;
             break;
         }
     }

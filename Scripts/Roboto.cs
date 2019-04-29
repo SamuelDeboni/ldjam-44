@@ -43,9 +43,12 @@ public class Roboto : KinematicBody2D
         {    
             weapon.shoot(Position,(mousePos-Position).Normalized());
             weapon.GetNode<AnimatedSprite>("Sprite").Animation = "Shoting";
+
         }
         else
+        {
             weapon.GetNode<AnimatedSprite>("Sprite").Animation = "Default";
+        }
 
         var hpBar = GetNode("../HUD/HPBar") as TextureProgress;
         if(hpBar != null) hpBar.Value = hp;
