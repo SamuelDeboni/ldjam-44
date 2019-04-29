@@ -73,7 +73,7 @@ public class Roboto : KinematicBody2D
     public void die()
     {
         GetTree().ChangeScene("res://GameOver.tscn");
-        GD.Print("The player is dead");
+        //GD.Print("The player is dead");
     }
 
     public void damage(float amount)

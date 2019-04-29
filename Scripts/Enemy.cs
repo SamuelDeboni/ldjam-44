@@ -54,7 +54,6 @@ public class Enemy : KinematicBody2D
             float dist = Position.DistanceTo(roboto.Position);
             float strength = Mathf.Clamp(60 - dist/5, 5, 30);
             CameraShake.Shake(strength);
-            GD.Print(strength);
         }
         
 
