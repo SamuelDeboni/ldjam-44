@@ -75,10 +75,10 @@ public class BigGun : TextureRect
             {
                 roboto.hp -= heatingCost[heatingLevel];
                 heatingLevel++;
-                robotoWeapon.overload -= 0.15f;
+                robotoWeapon.overload -= 0.2f;
             }
             if(heatingLevel < 5)
-                heatingLabel.Text = (100 - (heatingLevel+1)*0.15f*100).ToString()+"% Heating\n-"+heatingCost[heatingLevel].ToString()+"HP";
+                heatingLabel.Text = (100 - (heatingLevel+1)*0.2f*100).ToString()+"% Heating\n-"+heatingCost[heatingLevel].ToString()+"HP";
             else
                 heatingLabel.Text = " ";
             GD.Print("Heating");

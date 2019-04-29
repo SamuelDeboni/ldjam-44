@@ -68,10 +68,10 @@ texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 
 [node name="WaveLabel" type="Label" parent="HUD"]
-anchor_left = 0.01
-anchor_right = 0.54
-margin_left = 437.76
-margin_right = 39.04
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_right = 80.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 1 )
 text = "Wave"
@@ -87,6 +87,15 @@ custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 value = 54.73
 percent_visible = false
+
+[node name="KillCount" type="Label" parent="HUD"]
+margin_left = 17.1357
+margin_top = 69.2964
+margin_right = 154.136
+margin_bottom = 104.296
+text = "Enemies Killed"
+align = 1
+valign = 1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

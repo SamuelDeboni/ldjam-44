@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Main : Node2D
 {
+    public int enemyKilled;
     Timer timer;
     public Timer waveDuration;
     
@@ -40,7 +41,8 @@ public class Main : Node2D
     }
     public override void _Process(float delta)
     {      
-        
+        GetNode<Label>("HUD/KillCount").Text = "Enemies Killed " + enemyKilled.ToString();
+
         if(timer.TimeLeft == 0 && enemy != null && waveDuration.TimeLeft <= 40 && waveDuration.TimeLeft > 5)
         {
             waveText.Text = "Wave " + (waveCounter+1);

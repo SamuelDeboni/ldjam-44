@@ -30,7 +30,7 @@ public class Enemy : KinematicBody2D
         {
             var collision = MoveAndCollide(vel);
             if(collision != null && collision.Collider is Roboto)
-                 robotoScript.damage(5);
+                 robotoScript.damage(10);
         }
         else
         {
@@ -46,6 +46,9 @@ public class Enemy : KinematicBody2D
 
     public void die()
     {
+        Main main = GetTree().GetRoot().GetNode("Main") as Main;
+        main.enemyKilled++;
+        //GD.Print( main.enemyKilled);
         QueueFree();
     }
     public void damage(float amount)

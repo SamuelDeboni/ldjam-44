@@ -35,7 +35,7 @@ public class Bullet : Area2D
         if(body is Roboto && isFromEnemy)
         {
             var roboto = body as Roboto;
-            roboto.damage(5);
+            roboto.damage(10);
         }
 
         if(piercingLV <= 0)
