@@ -51,6 +51,7 @@ position = Vector2( 64, 128 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Roboto"]
 stream = ExtResource( 5 )
+volume_db = -10.097
 autoplay = true
 attenuation = 0.258816
 

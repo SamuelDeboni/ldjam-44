@@ -55,5 +55,6 @@ text = "Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -13.126
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
