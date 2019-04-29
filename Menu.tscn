@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menu.cs" type="Script" id=1]
 [ext_resource path="res://NotoSans-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sounds/ADventureMeme.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sprites/Title.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 12
@@ -49,5 +50,12 @@ text = "Play"
 stream = ExtResource( 3 )
 volume_db = -18.547
 autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 190.0
+margin_top = 130.0
+margin_right = 382.0
+margin_bottom = 322.0
+texture = ExtResource( 4 )
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

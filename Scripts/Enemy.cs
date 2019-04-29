@@ -52,7 +52,7 @@ public class Enemy : KinematicBody2D
         if (roboto != null)
         {
             float dist = Position.DistanceTo(roboto.Position);
-            float strength = Mathf.Clamp(60 - dist/5, 5, 30);
+            float strength = Mathf.Clamp(40 - dist/10, 5, 20);
             CameraShake.Shake(strength);
         }
         
