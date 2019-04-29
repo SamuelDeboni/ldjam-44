@@ -11,8 +11,9 @@ public class EnemyWeapon : Sprite
         GetParent().GetNode("..").AddChild(bulletInstance);
         var bulletScript = bulletInstance as Bullet;
         bulletInstance.Position = GetNode<KinematicBody2D>("..").Position;
-        Vector2 vel = (-Position+target).Normalized();
+        Vector2 vel = GetGlobalTransform().x.Normalized();
         bulletScript.isFromEnemy = true;
         bulletScript.vel = vel;
+		//GD.Print(GetGlobalTransform().x);
     }
 }

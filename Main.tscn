@@ -110,6 +110,7 @@ one_shot = true
 autostart = true
 
 [node name="BigGun" type="TextureRect" parent="."]
+editor/display_folded = true
 margin_left = -96.0
 margin_top = -144.0
 margin_right = 96.0
