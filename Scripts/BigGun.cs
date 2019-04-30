@@ -111,10 +111,10 @@ public class BigGun : TextureRect
             {
                 roboto.hp -= damageCost[damageLevel];
                 damageLevel++;
-                robotoWeapon.damage = 5*(damageLevel+1);
+                robotoWeapon.damage = 3*(damageLevel+1);
             }   
             if(damageLevel < 5)
-                damageLabel.Text = "+5 Damage \n-"+damageCost[damageLevel].ToString()+"HP";
+                damageLabel.Text = "+3 Damage \n-"+damageCost[damageLevel].ToString()+"HP";
             else
                 damageLabel.Text = " ";
             GD.Print("Damage");

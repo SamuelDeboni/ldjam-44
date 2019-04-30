@@ -110,7 +110,6 @@ one_shot = true
 autostart = true
 
 [node name="BigGun" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = -96.0
 margin_top = -144.0
 margin_right = 96.0
@@ -171,9 +170,11 @@ margin_bottom = 96.0
 theme = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="BigGun/Damage"]
-margin_right = 78.0
-margin_bottom = 48.0
-text = "+5 Damage
+margin_left = -0.440125
+margin_top = -0.440125
+margin_right = 77.5599
+margin_bottom = 47.5599
+text = "+3 Damage
 -20HP"
 align = 1
 valign = 1
